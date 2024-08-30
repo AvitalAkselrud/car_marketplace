@@ -11,6 +11,15 @@ st.subheader('Use this app to select the best car for you')
 # Display the image
 st.image('mainimage.jpg', caption='Choose the car that speaks to you', use_column_width=True)
 
+#Slider
+
+price_range = st.slider(
+     "Set the price range", 
+     min_value=200, max_value=70000, value=(200,70000))
+
+actual_range=list(range(price_range[0],price_range[1]+1))
+filtered_data=data[data.price.isin(actual_range)]
+
 # Histograph
 condition_order = data['condition'].value_counts().index.tolist()
 
